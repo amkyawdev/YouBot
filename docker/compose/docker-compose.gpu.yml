@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ../..
+      dockerfile: docker/gpu/Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ../../app:/app/app
+    environment:
+      - NODE_ENV=development
+
+  backend:
+    build:
+      context: ../..
+      dockerfile: docker/gpu/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../app:/app/app
+      - models:/app/app/models
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    depends_on:
+      - frontend
+
+volumes:
+  models:

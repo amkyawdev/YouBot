@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ../..
+      dockerfile: docker/cpu/Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ../../app:/app/app
+    environment:
+      - NODE_ENV=development
+    command: npm run dev:frontend
+
+  backend:
+    build:
+      context: ../..
+      dockerfile: docker/cpu/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../app:/app/app
+      - models:/app/app/models
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    command: npm run dev:backend
+    depends_on:
+      - frontend
+
+volumes:
+  models:

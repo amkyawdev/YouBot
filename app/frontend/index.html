@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="You Bot AI - Your Personal Offline AI System">
+  <meta name="theme-color" content="#6C63FF">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <title>You Bot AI</title>
+  <link rel="stylesheet" href="/src/styles/global.css">
+  <link rel="stylesheet" href="/src/styles/theme.css">
+  <link rel="stylesheet" href="/src/styles/animations.css">
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <img src="/favicon.svg" alt="You Bot AI" width="32" height="32">
+          <span class="logo-text">YouBot</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/pages/home/" class="nav-item active" data-page="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Home</span>
+        </a>
+        <a href="/pages/chat/" class="nav-item" data-page="chat">
+          <span class="nav-icon">💬</span>
+          <span class="nav-label">Chat</span>
+        </a>
+        <a href="/pages/models/" class="nav-item" data-page="models">
+          <span class="nav-icon">🤖</span>
+          <span class="nav-label">Models</span>
+        </a>
+        <a href="/pages/settings/" class="nav-item" data-page="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </nav>
+    </aside>
+    <main id="main-content">
+      <div id="page-home" class="page active">
+        <div class="welcome-card">
+          <h1>Welcome to You Bot AI</h1>
+          <p>Your Personal Offline AI System</p>
+          <button id="start-chat" class="btn-primary">Start Chatting</button>
+        </div>
+      </div>
+      <div id="page-chat" class="page">
+        <div class="chat-container">
+          <div id="chat-messages" class="chat-messages"></div>
+          <div class="chat-input-area">
+            <textarea id="chat-input" placeholder="Type your message..." rows="1"></textarea>
+            <button id="send-btn" class="btn-send">Send</button>
+          </div>
+        </div>
+      </div>
+      <div id="page-models" class="page">
+        <div class="models-container">
+          <h2>AI Models</h2>
+          <div id="models-list" class="models-list">
+            <p class="empty-state">No models loaded. Upload a model to get started.</p>
+          </div>
+          <button id="upload-model" class="btn-primary">Upload Model</button>
+        </div>
+      </div>
+      <div id="page-settings" class="page">
+        <div class="settings-container">
+          <h2>Settings</h2>
+          <div class="settings-group">
+            <label>
+              <span>AI Runtime</span>
+              <select id="runtime-select">
+                <option value="llama">llama.cpp</option>
+                <option value="ollama">Ollama</option>
+                <option value="transformers">Transformers.js</option>
+              </select>
+            </label>
+          </div>
+          <div class="settings-group">
+            <label>
+              <span>Memory</span>
+              <input type="range" id="memory-slider" min="1" max="16" value="4">
+              <span id="memory-value">4 GB</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

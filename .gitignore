@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+dist/
+build/
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Models (large files, store separately)
+app/models/
+app/uploads/models/*.gguf
+app/uploads/models/*.onnx
+app/storage/models/
+
+# Uploads
+app/uploads/temp/
+app/uploads/documents/
+app/uploads/images/
+
+# Cache
+app/storage/cache/
+app/storage/memory/
+
+# Logs
+logs/
+*.log
+
+# Docker
+.docker/
+
+# Misc
+*.pid
