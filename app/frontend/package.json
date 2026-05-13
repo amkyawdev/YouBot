@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:vercel": "vite build --outDir dist",
+    "build:vercel": "npm install && vite build --outDir dist",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -16,7 +16,7 @@
     "vite-plugin-pwa": "^0.20.0"
   },
   "vercel": {
-    "buildCommand": "npm run build",
+    "buildCommand": "npm install && npm run build",
     "outputDirectory": "dist"
   }
 }
